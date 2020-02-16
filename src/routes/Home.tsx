@@ -2,27 +2,13 @@ import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import Utils from '../utils';
 
-const isValidDate = (d: Date) => {
-  return d instanceof Date && !isNaN(d.getTime());
-};
-
-const useQuery = (): HomeQueries => {
-  let params = new URLSearchParams(useLocation().search);
-  let userName = params.get('userName') || '';
-  let start = new Date(params.get('start'));
-
-  return new HomeQueries(
-    userName,
-    Utils.isValidDate(start) ? start : new Date()
-  );
-};
-
 const Home = () => {
-  let { userName, start } = useQuery();
+  let homeQueries = HomeQueries.parseHomeQueries(useLocation().search);
   return (
     <div>
       <h3>
-        Home, userName: {userName}, date: {start.toString()}
+        Home, userName: {homeQueries.userName}, date:{' '}
+        {homeQueries.start.toString()}
       </h3>
     </div>
   );
@@ -38,4 +24,16 @@ export class HomeQueries {
     this.userName = userName;
     this.start = start;
   }
+
+  public static parseHomeQueries = (queryString: string): HomeQueries => {
+    let params = new URLSearchParams(queryString);
+
+    let userName = params.get('userName') || '';
+    let start = new Date(params.get('start'));
+
+    return new HomeQueries(
+      userName,
+      Utils.isValidDate(start) ? start : new Date()
+    );
+  };
 }
