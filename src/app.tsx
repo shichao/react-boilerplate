@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from 'react-router-dom';
-import { About, Home } from './routes';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { About, Home, QueryString } from './routes';
 
 const App = () => {
   return (
@@ -14,8 +8,11 @@ const App = () => {
       <div>
         <ul>
           <li>
-            <Link to="/?userName=chao&start=2020-02-16T21:29:13.186Z">
-              Home
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="queryString/?userName=chao&start=2020-02-16T21:29:13.186Z">
+              QueryString
             </Link>
           </li>
           <li>
@@ -24,7 +21,7 @@ const App = () => {
         </ul>
       </div>
       <Switch>
-        <Route path="/:params" />
+        <Route path="/queryString" children={<QueryString />} />
         <Route path="/about" children={<About />} />
         <Route path="*" children={<Home />} />
       </Switch>
