@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { About } from './routes';
+import { About, Home } from './routes';
 
 const App = () => {
   return (
@@ -8,16 +8,19 @@ const App = () => {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/?userName=chao&start=2020-02-16T21:29:13.186Z">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about/1">About</Link>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </div>
       <Switch>
-        <Route path="/about/:id" children={<About />} />
-        <Route path="*" children={<About />} />
+        <Route path="/:params" />
+        <Route path="/about" children={<About />} />
+        <Route path="*" children={<Home />} />
       </Switch>
     </Router>
   );
