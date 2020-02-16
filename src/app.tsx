@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from 'react-router-dom';
 import { About, Home } from './routes';
 
 const App = () => {

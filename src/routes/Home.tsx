@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Utils from '../utils';
 
 const Home = () => {
   let homeQueries = HomeQueries.parseHomeQueries(useLocation().search);
+  const history = useHistory();
+
+  const redirect = () => {
+    history.push('/about');
+  };
   return (
     <div>
       <h3>
         Home, userName: {homeQueries.userName}, date:{' '}
         {homeQueries.start.toString()}
       </h3>
+      <button onClick={redirect}>Redirect</button>
     </div>
   );
 };
