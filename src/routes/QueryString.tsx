@@ -9,7 +9,9 @@ const QueryString = () => {
     <div>
       <h3>QueryString example:</h3>
       <div>
-        UserName: {homeQueries.userName}, date: {homeQueries.start.toString()}
+        <p>UserName: {homeQueries.userName}</p>
+        <p>start date: {homeQueries.start.toString()}</p>
+        <p>end date: {homeQueries.end.toString()}</p>
       </div>
     </div>
   );
@@ -32,18 +34,19 @@ export class QueryStringQueries {
     queryString: string
   ): QueryStringQueries => {
     let params = new URLSearchParams(queryString);
-
+    //1. userName
     let userName = params.get('userName') || '';
-    let now = new Date();
-    let start = new Date(params.get('start'));
-    let end = new Date(params.get('end'));
 
-    return new QueryStringQueries(
-      userName,
-      Utils.isValidDate(start)
-        ? start
-        : new Date(now).setDate(now.getDate() - 1),
-      Utils.isValidDate(end) ? end : new Date(now)
+    //2. start
+    let now = new Date();
+    let start = Utils.convertToDate(
+      params.get('start'),
+      new Date(new Date(now).setDate(now.getDate() - 1))
     );
+
+    //3. end
+    let end = Utils.convertToDate(params.get('end'), new Date(now));
+
+    return new QueryStringQueries(userName, start, end);
   };
 }
