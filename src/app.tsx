@@ -11,7 +11,7 @@ const App = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="queryString?userName=chao&start=2020-02-16T21:29:13.186Z&end=2020-02-15T21:29:13.186Z">
+            <Link to="/queryString?userName=chao&start=2020-02-16T21:29:13.186Z&end=2020-02-15T21:29:13.186Z">
               QueryString
             </Link>
           </li>
