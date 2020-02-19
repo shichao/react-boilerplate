@@ -11,7 +11,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": ".",
     "paths": {
-      "@src*": ["./src*"]
+      "@src*": ["./src*"],
+      "~*": ["./node_modules*"]
     }
   },
   "compileOnSave": false,
