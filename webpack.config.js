@@ -17,6 +17,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     stats: 'errors-only',
+    historyApiFallback: true,
   },
   module: {
     rules: [
