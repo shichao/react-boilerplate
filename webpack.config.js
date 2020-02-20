@@ -22,6 +22,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: { presets: ['@babel/env'] },
+      },
+      {
         test: /\.(sc|c)ss$/i,
         use: [
           { loader: 'style-loader' },
@@ -36,7 +42,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.jsx', '.js', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx'],
     alias: {
       '@src': resolve('src'),
       '~': resolve('node_modules'),
