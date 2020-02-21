@@ -23,7 +23,7 @@ const App = () => {
       </Navbar>
       <Switch>
         <Route path="/queryString" children={<QueryString />} />
-        <Route path="/about" children={<About exact />} component={About} />
+        <Route path="/about" children={<About />} component={About} />
         <Route path="*" children={<Home />} />
       </Switch>
     </BrowserRouter>
