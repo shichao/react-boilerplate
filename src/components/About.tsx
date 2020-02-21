@@ -1,8 +1,7 @@
 import * as React from 'react';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 
-import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
-
-const About = (props: any) => {
+const About = () => {
   return (
     <div>
       <h3>About</h3>
