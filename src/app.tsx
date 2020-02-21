@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav } from 'react-bootstrap';
+import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { About, Home, QueryString } from '@src/components';
 
 const App = () => {
@@ -9,16 +9,19 @@ const App = () => {
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>Chao's React Palyground</Navbar.Brand>
-        <Nav className="mr-auto">
-          <LinkContainer to="">
+        <Nav>
+          <IndexLinkContainer to="/" activeClassName="active">
             <Nav.Link>Home</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/queryString?userName=chao">
+          </IndexLinkContainer>
+          <IndexLinkContainer
+            to="/queryString?userName=chao"
+            activeClassName="active"
+          >
             <Nav.Link>QueryString</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/about">
+          </IndexLinkContainer>
+          <IndexLinkContainer to="/about">
             <Nav.Link>About</Nav.Link>
-          </LinkContainer>
+          </IndexLinkContainer>
         </Nav>
       </Navbar>
       <Switch>
