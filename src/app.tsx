@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { About, Home, QueryString } from './routes';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav } from 'react-bootstrap';
+import { About, Home, QueryString } from '@src/components';
 
 const App = () => {
   return (
