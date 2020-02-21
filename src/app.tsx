@@ -22,8 +22,16 @@ const App = () => {
         </Nav>
       </Navbar>
       <Switch>
-        <Route path="/queryString" component={QueryString} />
-        <Route path="/about" component={About} />
+        <Route
+          path="/queryString"
+          component={QueryString}
+          components={[IndexLinkContainer]}
+        />
+        <Route
+          path="/about"
+          component={About}
+          components={[IndexLinkContainer]}
+        />
         <Route path="/" component={Home} />
       </Switch>
     </BrowserRouter>
