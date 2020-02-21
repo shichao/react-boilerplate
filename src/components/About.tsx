@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const About = () => {
-  const history = useHistory();
+const About = (props: any) => {
   const goto = () => {
-    history.push('/queryString?userName=frontAbout');
+    props.history.push('/queryString');
   };
   return (
     <div>
@@ -14,4 +13,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default withRouter(About);
