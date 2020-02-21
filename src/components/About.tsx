@@ -6,8 +6,8 @@ const About = () => {
     <div>
       <h3>About</h3>
       <p>
-        <IndexLinkContainer to="/queryString">
-          <button>Goto QueryString (Alternative)</button>
+        <IndexLinkContainer to="/queryString?userName=chao">
+          <button>Goto QueryString</button>
         </IndexLinkContainer>
       </p>
     </div>
