@@ -16,15 +16,15 @@ const App = () => {
           <IndexLinkContainer to="/queryString" activeClassName="active">
             <Nav.Link>QueryString</Nav.Link>
           </IndexLinkContainer>
-          <IndexLinkContainer to="/about">
+          <IndexLinkContainer to="/about" activeClassName="active">
             <Nav.Link>About</Nav.Link>
           </IndexLinkContainer>
         </Nav>
       </Navbar>
       <Switch>
-        <Route path="/queryString" children={<QueryString />} />
-        <Route path="/about" children={<About />} component={About} />
-        <Route path="*" children={<Home />} />
+        <Route path="/queryString" component={<QueryString} />
+        <Route path="/about" component={About} />
+        <Route path="/" component={Home} />
       </Switch>
     </BrowserRouter>
   );
