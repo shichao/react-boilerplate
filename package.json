@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server  --mode development --inline --hot --open",
+    "del-js": "del-cli src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^3.4.2",
     "css-modules-typescript-loader": "^4.0.0",
+    "del-cli": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
