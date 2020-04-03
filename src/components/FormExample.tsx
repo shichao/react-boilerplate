@@ -16,7 +16,7 @@ const FormExample = () => {
           confidence: SiteGaugeAlertConfidence.Unknown,
           alertIds: [1, 2, 3],
         }}
-        validate={values => {}}
+        validationSchema={SiteGaugeAlertValidationSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
