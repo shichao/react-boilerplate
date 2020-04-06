@@ -108,18 +108,16 @@ const SiteGaugeAlertValidationSchema = yup.object({
   author: yup.string().required(),
   comment: yup.string().nullable(),
   confidence: yup
-    .mixed<
-      | SiteGaugeAlertConfidence.False
-      | SiteGaugeAlertConfidence.High
-      | SiteGaugeAlertConfidence.Low
-      | SiteGaugeAlertConfidence.Medium
-    >()
-    .oneOf([
-      SiteGaugeAlertConfidence.False |
-        SiteGaugeAlertConfidence.High |
-        SiteGaugeAlertConfidence.Low |
+    .number()
+    .oneOf(
+      [
+        SiteGaugeAlertConfidence.False,
+        SiteGaugeAlertConfidence.High,
+        SiteGaugeAlertConfidence.Low,
         SiteGaugeAlertConfidence.Medium,
-    ]),
+      ],
+      'confidence is a required field'
+    ),
   alertIds: yup.array<number>().required(),
 });
 
