@@ -37,7 +37,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@types/yup": "^0.26.34",
+    "@types/yup": "^0.26.37",
     "bootstrap": "^4.4.1",
     "formik": "^2.1.4",
     "react": "^16.12.0",
@@ -45,6 +45,6 @@
     "react-dom": "^16.12.0",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.1.2",
-    "yup": "^0.28.3"
+    "yup": "^0.28.5"
   }
 }

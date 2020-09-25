@@ -1,49 +1,34 @@
 import * as React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { IndexLinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav } from 'react-bootstrap';
-import {
-  About,
-  Container,
-  Home,
-  QueryString,
-  FormExample,
-} from '@src/components';
-import ModalGalleryExample from './components/Gallery';
+import * as yup from 'yup';
+import { FormSchema } from './components/form/FormSchema';
+import MyForm from './components/form/MyForm';
+
+const entitySchema = yup.object().shape({
+  name: yup.string().required(),
+  age: yup.number().required().positive().integer(),
+  email: yup.string().email(),
+  website: yup.string().url(),
+  createdOn: yup.date().default(function () {
+    return new Date();
+  }),
+});
+
+const formSchema: FormSchema = {
+  entitySchema,
+  formSections: [
+    {
+      title: 'Section A',
+      rows: [
+        {
+          fields: [{ title: 'Name', name: 'name' }],
+        },
+      ],
+    },
+  ],
+};
 
 const App = () => {
-  return <ModalGalleryExample />;
-  // return (
-  //   <BrowserRouter>
-  //     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  //       <Navbar.Brand>Chao's React Palyground</Navbar.Brand>
-  //       <Nav>
-  //         <IndexLinkContainer to="/">
-  //           <a className="nav-link">Home</a>
-  //         </IndexLinkContainer>
-  //         <IndexLinkContainer to="/queryString">
-  //           <a className="nav-link">QueryString</a>
-  //         </IndexLinkContainer>
-  //         <IndexLinkContainer to="/about">
-  //           <a className="nav-link">About</a>
-  //         </IndexLinkContainer>
-  //         <IndexLinkContainer to="/container">
-  //           <a className="nav-link">Container</a>
-  //         </IndexLinkContainer>
-  //         <IndexLinkContainer to="/form">
-  //           <a className="nav-link">Form</a>
-  //         </IndexLinkContainer>
-  //       </Nav>
-  //     </Navbar>
-  //     <Switch>
-  //       <Route path="/queryString" component={QueryString} />
-  //       <Route path="/about" component={About} />
-  //       <Route path="/container" component={Container} />
-  //       <Route path="/form" component={FormExample} />
-  //       <Route path="/" component={Home} />
-  //     </Switch>
-  //   </BrowserRouter>
-  // );
+  return <MyForm schema={formSchema} />;
 };
 
 export default App;
