@@ -15,7 +15,7 @@ const entitySchema = yup.object().shape({
 
 const formSchema: FormSchema = {
   entitySchema,
-  formSections: [
+  sections: [
     {
       title: 'Section A',
       rows: [
@@ -23,6 +23,7 @@ const formSchema: FormSchema = {
           fields: [{ title: 'Name', name: 'name' }],
         },
       ],
+      isOpen: true,
     },
   ],
 };

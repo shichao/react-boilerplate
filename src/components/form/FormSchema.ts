@@ -1,20 +1,21 @@
-interface FormField {
+interface FormFieldSchema {
   title: string;
   name: string;
 }
 
-interface FormRow {
-  fields: FormField[];
+interface FormRowSchema {
+  fields: FormFieldSchema[];
 }
 
-interface FormSection {
+interface FormSectionSchema {
   title: string;
-  rows: FormRow[];
+  rows: FormRowSchema[];
+  isOpen?: boolean;
 }
 
 interface FormSchema {
   entitySchema: object;
-  formSections: FormSection[];
+  sections: FormSectionSchema[];
 }
 
-export { FormField, FormRow, FormSchema };
+export { FormFieldSchema, FormRowSchema, FormSectionSchema, FormSchema };
