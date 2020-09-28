@@ -1,0 +1,51 @@
+$header-background-color: #d0d0d0;
+$header-border-color: #666;
+$header-text-color: black;
+$header-border: solid 1px $header-border-color;
+
+$subsection-background-color: white;
+$subsection-border: solid 1px $header-background-color;
+
+.collapsibleSection {
+  max-width: 800px;
+  //@include easing-standard($material-duration-large-open);
+  margin-top: -1px;
+
+  & > .header {
+    background: $header-background-color;
+    color: $header-text-color;
+    padding: 8px;
+    border-top: $header-border;
+    border-bottom: $header-border;
+    border-radius: inherit;
+    cursor: pointer;
+    //@include non-selectable();
+
+    .headerIcon {
+      width: 25px;
+      padding: 5px;
+      float: right;
+      color: #666666;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .body {
+    padding: 10px 15px;
+  }
+
+  &.subSection {
+    background: $subsection-background-color;
+    border: $subsection-border;
+    margin-top: 8px;
+    border-radius: 4px;
+
+    //@include easing-standard($material-duration-medium-open);
+    .header {
+      border: none;
+      background: $subsection-background-color;
+    }
+  }
+}
