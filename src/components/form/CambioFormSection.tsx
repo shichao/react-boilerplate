@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
+import FormRow from './CambioFormRow';
 import { FormSectionSchema } from './FormSchema';
 
 //Styles
-import styles from './FormSection.module.scss';
+import styles from './CambioFormSection.module.scss';
 
-const FormSection = (props: { schema: FormSectionSchema; children?: any }) => {
+const CambioFormSection = (props: { schema: FormSectionSchema }) => {
   const [isOpened, setIsOpened] = React.useState(
     props.schema.isOpen ? true : false
   );
@@ -20,9 +21,14 @@ const FormSection = (props: { schema: FormSectionSchema; children?: any }) => {
           }`}
         ></span>
       </div>
-      <Collapse isOpened={isOpened}>{props.children}</Collapse>
+      <Collapse isOpened={isOpened}>
+        {props.schema?.rows?.length > 0 &&
+          props.schema.rows.map((rowSchema, idx) => {
+            return <FormRow key={`row_${idx}`} schema={rowSchema} />;
+          })}
+      </Collapse>
     </div>
   );
 };
 
-export default FormSection;
+export default CambioFormSection;

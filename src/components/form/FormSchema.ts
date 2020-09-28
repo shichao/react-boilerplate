@@ -4,6 +4,7 @@ interface FormFieldSchema {
 }
 
 interface FormRowSchema {
+  title?: string;
   fields: FormFieldSchema[];
 }
 
