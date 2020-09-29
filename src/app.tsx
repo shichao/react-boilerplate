@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as yup from 'yup';
 import { FormSchema } from './components/form/FormSchema';
-import CambioForm from './components/form/CambioForm';
+import Form from './components/cambio/Form';
 
 const entitySchema = yup.object().shape({
   name: yup.string().required(),
@@ -33,7 +33,7 @@ const formSchema: FormSchema = {
 };
 
 const App = () => {
-  return <CambioForm schema={formSchema} />;
+  return <Form schema={formSchema} />;
 };
 
 export default App;

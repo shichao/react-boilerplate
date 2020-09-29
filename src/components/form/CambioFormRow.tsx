@@ -3,7 +3,13 @@ import { FormRowSchema } from './FormSchema';
 
 const CambioFormRow = (props: { schema: FormRowSchema }) => {
   return (
-    <>{props.schema.title && <div className="row">{props.schema.title}</div>}</>
+    <>
+      {props.schema.title && (
+        <div className="row">
+          <div>{props.schema.title}</div>
+        </div>
+      )}
+    </>
   );
 };
 
