@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as yup from 'yup';
-import { FormSchema } from './components/form/FormSchema';
+import { FieldType, FormSchema } from './components/cambio/FormSchema';
 import Form from './components/cambio/Form';
 
-const entitySchema = yup.object().shape({
+const personSchema = yup.object().shape({
   name: yup.string().required(),
   age: yup.number().required().positive().integer(),
   email: yup.string().email(),
@@ -13,9 +13,32 @@ const entitySchema = yup.object().shape({
   }),
 });
 
+type Person = yup.InferType<typeof personSchema>;
+
 const formSchema: FormSchema = {
-  entitySchema,
+  entitySchema: personSchema,
   sections: [
+    {
+      title: 'Section A',
+      rows: [
+        {
+          fields: [{ title: 'Name', name: 'name' }],
+        },
+        {
+          title: 'row with title',
+          fields: [
+            { title: 'Name', name: 'name' },
+            { title: 'Age', name: 'age', type: FieldType.Number },
+            {
+              title: 'Description',
+              name: 'description',
+              type: FieldType.Textarea,
+            },
+          ],
+        },
+      ],
+      isOpen: true,
+    },
     {
       title: 'Section A',
       rows: [
@@ -27,13 +50,17 @@ const formSchema: FormSchema = {
           fields: [],
         },
       ],
-      isOpen: true,
+      isOpen: false,
     },
   ],
 };
 
+const values: Person = {
+  name: 'Chao',
+};
+
 const App = () => {
-  return <Form schema={formSchema} />;
+  return <Form schema={formSchema} values={values} />;
 };
 
 export default App;

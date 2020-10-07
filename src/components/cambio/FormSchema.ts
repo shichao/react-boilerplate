@@ -1,6 +1,13 @@
+enum FieldType {
+  Unknown = 0,
+  Text = 1,
+  Textarea = 2,
+  Number = 3,
+}
 interface FormFieldSchema {
   title: string;
   name: string;
+  type?: FieldType;
 }
 
 interface FormRowSchema {
@@ -19,4 +26,10 @@ interface FormSchema {
   sections: FormSectionSchema[];
 }
 
-export { FormFieldSchema, FormRowSchema, FormSectionSchema, FormSchema };
+export {
+  FieldType,
+  FormFieldSchema,
+  FormRowSchema,
+  FormSectionSchema,
+  FormSchema,
+};
