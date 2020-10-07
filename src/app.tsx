@@ -24,16 +24,41 @@ const formSchema: FormSchema = {
   entitySchema: personSchema,
   sections: [
     {
-      title: 'Section A',
+      title: 'User Summary',
       rows: [
         {
-          fields: [{ title: 'Name', entityPropertyName: 'name' }],
-        },
-        {
-          title: 'row with title',
+          title: 'Basic Infomation',
           fields: [
             { title: 'Name', entityPropertyName: 'name' },
             { title: 'Age', entityPropertyName: 'age', type: FieldType.Number },
+          ],
+        },
+        {
+          fields: [
+            {
+              title: 'Email',
+              entityPropertyName: 'email',
+              type: FieldType.Email,
+            },
+          ],
+        },
+        {
+          fields: [
+            {
+              title: 'Website',
+              entityPropertyName: 'website',
+              type: FieldType.Text,
+            },
+          ],
+        },
+      ],
+      isOpen: true,
+    },
+    {
+      title: 'Other',
+      rows: [
+        {
+          fields: [
             {
               title: 'Description',
               entityPropertyName: 'description',
@@ -42,27 +67,12 @@ const formSchema: FormSchema = {
           ],
         },
       ],
-      isOpen: true,
-    },
-    {
-      title: 'Section A',
-      rows: [
-        {
-          fields: [{ title: 'Name', entityPropertyName: 'name' }],
-        },
-        {
-          title: 'row with title',
-          fields: [],
-        },
-      ],
       isOpen: false,
     },
   ],
 };
 
-const values: Person = {
-  name: 'Chao',
-};
+const values: Person = {};
 
 const App = () => {
   return <Form schema={formSchema} values={values} />;

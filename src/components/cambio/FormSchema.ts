@@ -2,6 +2,7 @@ enum FieldType {
   Text = 'text',
   Textarea = 'textarea',
   Number = 'number',
+  Email = 'email',
 }
 interface FormFieldSchema {
   title: string;
