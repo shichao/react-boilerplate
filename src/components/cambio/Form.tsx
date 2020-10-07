@@ -9,8 +9,10 @@ const CambioForm = (props: { schema: FormSchema; values: any }) => {
   return (
     <Formik
       initialValues={props.values}
-      validationSchema={props.schema.entitySchema}
-      onSubmit={console.log}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500));
+        alert(JSON.stringify(values, null, 2));
+      }}
     >
       {(formikProps: FormikProps<any>) => (
         <Form noValidate onSubmit={formikProps.handleSubmit}>

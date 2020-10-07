@@ -15,7 +15,7 @@ const FormField = (props: {
           <Form.Control
             type="number"
             name={props.schema.name}
-            value={props.formikProps.values[props.schema.name]}
+            value={props.formikProps.values[props.schema.name] ?? 0}
             onChange={props.formikProps.handleChange}
           />
         );
