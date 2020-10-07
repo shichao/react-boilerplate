@@ -5,7 +5,11 @@ import Form from './components/cambio/Form';
 
 const personSchema = yup.object().shape({
   name: yup.string().required(),
-  age: yup.number().required().positive().integer(),
+  age: yup
+    .number()
+    .required()
+    .positive('age must be a positive number')
+    .integer('age must be a positive number'),
   email: yup.string().email(),
   website: yup.string().url(),
   createdOn: yup.date().default(function () {
@@ -23,16 +27,16 @@ const formSchema: FormSchema = {
       title: 'Section A',
       rows: [
         {
-          fields: [{ title: 'Name', name: 'name' }],
+          fields: [{ title: 'Name', entityPropertyName: 'name' }],
         },
         {
           title: 'row with title',
           fields: [
-            { title: 'Name', name: 'name' },
-            { title: 'Age', name: 'age', type: FieldType.Number },
+            { title: 'Name', entityPropertyName: 'name' },
+            { title: 'Age', entityPropertyName: 'age', type: FieldType.Number },
             {
               title: 'Description',
-              name: 'description',
+              entityPropertyName: 'description',
               type: FieldType.Textarea,
             },
           ],
@@ -44,7 +48,7 @@ const formSchema: FormSchema = {
       title: 'Section A',
       rows: [
         {
-          fields: [{ title: 'Name', name: 'name' }],
+          fields: [{ title: 'Name', entityPropertyName: 'name' }],
         },
         {
           title: 'row with title',

@@ -1,42 +1,40 @@
 import { Field, FormikProps } from 'formik';
 import * as React from 'react';
-import { Col, Form, FormText } from 'react-bootstrap';
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
+import { Col, Form } from 'react-bootstrap';
 import { FieldType, FormFieldSchema } from './FormSchema';
 
 const FormField = (props: {
   schema: FormFieldSchema;
   formikProps: FormikProps<any>;
 }) => {
+  //short cuts
+  const fieldType = props.schema.type;
+  const entityPropertyName = props.schema.entityPropertyName;
+  const value = props.formikProps.values[entityPropertyName];
+  const error = props.formikProps.errors[entityPropertyName];
+
   const renderField = () => {
-    switch (props.schema.type) {
-      case FieldType.Number:
-        return (
-          <Form.Control
-            type="number"
-            name={props.schema.name}
-            value={props.formikProps.values[props.schema.name] ?? 0}
-            onChange={props.formikProps.handleChange}
-          />
-        );
+    switch (fieldType) {
       case FieldType.Textarea:
         return (
           <Form.Control
             as="textarea"
-            name={props.schema.name}
-            value={props.formikProps.values[props.schema.name]}
+            name={entityPropertyName}
+            value={value}
             onChange={props.formikProps.handleChange}
+            isInvalid={!!error}
           />
         );
-      case FieldType.Unknown:
       case FieldType.Text:
+      case FieldType.Number:
       default:
         return (
           <Form.Control
-            type="text"
-            name={props.schema.name}
-            value={props.formikProps.values[props.schema.name]}
+            type={fieldType}
+            name={entityPropertyName}
+            value={value ?? ''}
             onChange={props.formikProps.handleChange}
+            isInvalid={!!error}
           />
         );
     }
@@ -47,7 +45,7 @@ const FormField = (props: {
       <Form.Label>{props.schema.title}</Form.Label>
       {renderField()}
       <Form.Control.Feedback type="invalid">
-        {props.formikProps.errors[props.schema.name]}
+        {props.formikProps.errors[entityPropertyName]}
       </Form.Control.Feedback>
     </Form.Group>
   );

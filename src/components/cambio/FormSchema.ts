@@ -1,12 +1,11 @@
 enum FieldType {
-  Unknown = 0,
-  Text = 1,
-  Textarea = 2,
-  Number = 3,
+  Text = 'text',
+  Textarea = 'textarea',
+  Number = 'number',
 }
 interface FormFieldSchema {
   title: string;
-  name: string;
+  entityPropertyName: string;
   type?: FieldType;
 }
 
