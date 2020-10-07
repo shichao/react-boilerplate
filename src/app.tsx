@@ -11,6 +11,7 @@ const personSchema = yup.object().shape({
   createdOn: yup.date().default(function () {
     return new Date();
   }),
+  description: yup.string(),
 });
 
 type Person = yup.InferType<typeof personSchema>;

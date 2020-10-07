@@ -46,6 +46,9 @@ const FormField = (props: {
     <Form.Group as={Col}>
       <Form.Label>{props.schema.title}</Form.Label>
       {renderField()}
+      <Form.Control.Feedback type="invalid">
+        {props.formikProps.errors[props.schema.name]}
+      </Form.Control.Feedback>
     </Form.Group>
   );
 };

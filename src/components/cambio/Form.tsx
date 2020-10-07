@@ -8,6 +8,7 @@ import FormSection from './FormSection';
 const CambioForm = (props: { schema: FormSchema; values: any }) => {
   return (
     <Formik
+      validationSchema={props.schema.entitySchema}
       initialValues={props.values}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
