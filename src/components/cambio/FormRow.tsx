@@ -1,9 +1,13 @@
+import { FormikProps } from 'formik';
 import * as React from 'react';
 import { Form } from 'react-bootstrap';
 import FormField from './FormField';
 import { FormRowSchema } from './FormSchema';
 
-const FormRow = (props: { schema: FormRowSchema; values: any }) => {
+const FormRow = (props: {
+  schema: FormRowSchema;
+  formikProps: FormikProps<any>;
+}) => {
   return (
     <>
       {props.schema.title && (
@@ -18,7 +22,7 @@ const FormRow = (props: { schema: FormRowSchema; values: any }) => {
               <FormField
                 key={`field_${idx}`}
                 schema={fieldSchema}
-                values={props.values}
+                formikProps={props.formikProps}
               />
             );
           })}

@@ -3,8 +3,12 @@ import { Collapse } from 'react-collapse';
 import { FormSectionSchema } from './FormSchema';
 import Card from 'react-bootstrap/Card';
 import FormRow from './FormRow';
+import { FormikProps } from 'formik';
 
-const FormSection = (props: { schema: FormSectionSchema; values: any }) => {
+const FormSection = (props: {
+  schema: FormSectionSchema;
+  formikProps: FormikProps<any>;
+}) => {
   const [isOpened, setIsOpened] = React.useState(
     props.schema.isOpen ? true : false
   );
@@ -33,7 +37,7 @@ const FormSection = (props: { schema: FormSectionSchema; values: any }) => {
                 <FormRow
                   key={`row_${idx}`}
                   schema={rowSchema}
-                  values={props.values}
+                  formikProps={props.formikProps}
                 />
               );
             })}

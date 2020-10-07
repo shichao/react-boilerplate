@@ -1,10 +1,13 @@
-import { Field } from 'formik';
+import { Field, FormikProps } from 'formik';
 import * as React from 'react';
 import { Col, Form, FormText } from 'react-bootstrap';
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { FieldType, FormFieldSchema } from './FormSchema';
 
-const FormField = (props: { schema: FormFieldSchema; values: any }) => {
+const FormField = (props: {
+  schema: FormFieldSchema;
+  formikProps: FormikProps<any>;
+}) => {
   const renderField = () => {
     switch (props.schema.type) {
       case FieldType.Number:
@@ -12,7 +15,8 @@ const FormField = (props: { schema: FormFieldSchema; values: any }) => {
           <Form.Control
             type="number"
             name={props.schema.name}
-            value={props.values[props.schema.name]}
+            value={props.formikProps.values[props.schema.name]}
+            onChange={props.formikProps.handleChange}
           />
         );
       case FieldType.Textarea:
@@ -20,7 +24,8 @@ const FormField = (props: { schema: FormFieldSchema; values: any }) => {
           <Form.Control
             as="textarea"
             name={props.schema.name}
-            value={props.values[props.schema.name]}
+            value={props.formikProps.values[props.schema.name]}
+            onChange={props.formikProps.handleChange}
           />
         );
       case FieldType.Unknown:
@@ -30,7 +35,8 @@ const FormField = (props: { schema: FormFieldSchema; values: any }) => {
           <Form.Control
             type="text"
             name={props.schema.name}
-            value={props.values[props.schema.name]}
+            value={props.formikProps.values[props.schema.name]}
+            onChange={props.formikProps.handleChange}
           />
         );
     }
