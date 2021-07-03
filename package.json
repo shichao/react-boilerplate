@@ -23,6 +23,7 @@
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "axios": "^0.21.1",
     "connect-history-api-fallback": "^1.6.0",
     "css-loader": "^5.2.6",
     "css-modules-typescript-loader": "^4.0.1",
@@ -31,6 +32,7 @@
     "fork-ts-checker-webpack-plugin": "^6.2.12",
     "html-webpack-plugin": "^5.3.1",
     "jest": "^27.0.4",
+    "msw": "^0.30.1",
     "prettier": "^2.3.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -59,5 +61,8 @@
       "\\.(scss|css)$": "identity-obj-proxy",
       "^@src/(.*)$": "<rootDir>/src/$1"
     }
+  },
+  "msw": {
+    "workerDirectory": "dist"
   }
 }
