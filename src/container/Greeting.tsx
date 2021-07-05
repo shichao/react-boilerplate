@@ -23,7 +23,12 @@ const Greeting = () => {
     return !!!err && !!userName;
   };
 
-  return <>{showGreeting() && <h1>Greeting, {userName}</h1>}</>;
+  return (
+    <>
+      {showGreeting() && <h1 data-testid="greeting">Greeting, {userName}</h1>}
+      {!!err && <h1 data-testid="error">{err}</h1>}
+    </>
+  );
 };
 
 export { Greeting };
