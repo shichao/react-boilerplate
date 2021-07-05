@@ -32,3 +32,6 @@ describe('Greeting container test suite', () => {
     expect(error).toHaveTextContent('test error');
   });
 });
+
+//known issues:
+//1. jest v27 has some issue: document is not defined.
