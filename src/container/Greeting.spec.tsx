@@ -27,5 +27,8 @@ describe('Greeting container test suite', () => {
     );
     //act
     render(<Greeting />);
+    //assert
+    let error = await screen.findByTestId('error');
+    expect(error).toHaveTextContent('test error');
   });
 });
