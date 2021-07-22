@@ -25,6 +25,7 @@ const Greeting = () => {
 
   return (
     <>
+      <OrderItem />
       {showGreeting() && <h1 data-testid="greeting">Greeting, {userName}</h1>}
       {!!err && <h1 data-testid="error">{err}</h1>}
     </>
@@ -32,3 +33,15 @@ const Greeting = () => {
 };
 
 export { Greeting };
+
+const OrderItem = () => {
+  return (
+    <div className="cell">
+      <div className="raw_bg"></div>
+      <div className="raw">
+        <div className="col">price</div>
+        <div className="col">mount</div>
+      </div>
+    </div>
+  );
+};
