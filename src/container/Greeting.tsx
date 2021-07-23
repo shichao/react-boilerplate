@@ -1,5 +1,6 @@
 import { whoAmI } from '@src/services';
 import * as React from 'react';
+import { OrderItem } from './OrderItem';
 
 const Greeting = () => {
   const [userName, setUserName] = React.useState<string>();
@@ -25,23 +26,14 @@ const Greeting = () => {
 
   return (
     <>
-      <OrderItem />
-      {showGreeting() && <h1 data-testid="greeting">Greeting, {userName}</h1>}
-      {!!err && <h1 data-testid="error">{err}</h1>}
+      <div className="orderBoard">
+        <OrderItem order={{ price: 11.0, size: 1000 }} />
+        <OrderItem order={{ price: 12.0, size: 1000 }} />
+      </div>
+      {/* {showGreeting() && <h1 data-testid="greeting">Greeting, {userName}</h1>}
+      {!!err && <h1 data-testid="error">{err}</h1>} */}
     </>
   );
 };
 
 export { Greeting };
-
-const OrderItem = () => {
-  return (
-    <div className="cell">
-      <div className="raw_bg"></div>
-      <div className="raw">
-        <div className="col">price</div>
-        <div className="col">mount</div>
-      </div>
-    </div>
-  );
-};
